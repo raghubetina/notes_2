@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :current_user_must_be_project_user, only: [:edit, :update, :destroy] 
+
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
@@ -65,6 +67,14 @@ class ProjectsController < ApplicationController
 
 
   private
+
+  def current_user_must_be_project_user
+    set_project
+    unless current_user == @project.user
+      redirect_back fallback_location: root_path, alert: "You are not authorized for that."
+    end
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
