@@ -1,6 +1,9 @@
 class Project < ApplicationRecord
   # Direct associations
 
+  has_many   :api_integrations,
+             :dependent => :destroy
+
   has_many   :user_stories,
              :dependent => :destroy
 
