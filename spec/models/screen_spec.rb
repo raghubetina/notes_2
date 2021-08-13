@@ -14,6 +14,10 @@ RSpec.describe Screen, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:incoming_screens) }
+
+    it { should have_many(:leads_to_screens) }
+
     end
 
     describe "Validations" do

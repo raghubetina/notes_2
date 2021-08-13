@@ -15,6 +15,14 @@ class Screen < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :incoming_screens,
+             :through => :incoming_controls,
+             :source => :on_screen
+
+  has_many   :leads_to_screens,
+             :through => :outgoing_controls,
+             :source => :leads_to_screen
+
   # Validations
 
   # Scopes
