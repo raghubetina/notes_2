@@ -6,6 +6,8 @@ class EventResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :callbacks
+
   # Indirect associations
 
 end
