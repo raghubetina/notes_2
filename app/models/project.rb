@@ -1,6 +1,9 @@
 class Project < ApplicationRecord
   # Direct associations
 
+  has_many   :user_stories,
+             :dependent => :destroy
+
   belongs_to :user,
              :counter_cache => true
 

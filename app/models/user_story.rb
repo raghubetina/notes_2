@@ -1,6 +1,8 @@
 class UserStory < ApplicationRecord
   # Direct associations
 
+  belongs_to :project
+
   # Indirect associations
 
   # Validations
