@@ -1,0 +1,32 @@
+<!-- Form callback start -->
+<%= form_with(model: @callback, local: true) do |f| %>
+<!-- Form callback end -->
+
+  <!-- Label and input for event_id start -->
+  <!-- Input for event_id start -->
+  <%= f.hidden_field :event_id, value: @event.id %>
+  <!-- Input for event_id end -->
+  <!-- Label and input for event_id end -->
+
+  <!-- Label and input for project_id start -->
+  <div class="form-group">
+    <%= f.label :project_id %>
+
+    <!-- Input for project_id start -->
+    <%= f.text_field :project_id, class: "form-control" %>
+    <!-- Input for project_id end -->
+  </div>
+  <!-- Label and input for project_id end -->
+
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <%= f.label :description %>
+
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: "form-control" %>
+    <!-- Input for description end -->
+  </div>
+  <!-- Label and input for description end -->
+
+  <%= f.submit "Create callback", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

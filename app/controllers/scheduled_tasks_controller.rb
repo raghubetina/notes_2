@@ -24,7 +24,12 @@ class ScheduledTasksController < ApplicationController
     @scheduled_task = ScheduledTask.new(scheduled_task_params)
 
     if @scheduled_task.save
-      redirect_to @scheduled_task, notice: 'Scheduled task was successfully created.'
+      message = 'ScheduledTask was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @scheduled_task, notice: message
+      end
     else
       render :new
     end

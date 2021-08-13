@@ -24,7 +24,12 @@ class CallbacksController < ApplicationController
     @callback = Callback.new(callback_params)
 
     if @callback.save
-      redirect_to @callback, notice: 'Callback was successfully created.'
+      message = 'Callback was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @callback, notice: message
+      end
     else
       render :new
     end

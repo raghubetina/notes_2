@@ -1,0 +1,70 @@
+<!-- Form state_machine start -->
+<%= form_with(model: @state_machine, local: true) do |f| %>
+<!-- Form state_machine end -->
+
+  <!-- Label and input for link_to_diagram start -->
+  <div class="form-group">
+    <%= f.label :link_to_diagram %>
+
+    <!-- Input for link_to_diagram start -->
+    <%= f.text_field :link_to_diagram, class: "form-control" %>
+    <!-- Input for link_to_diagram end -->
+  </div>
+  <!-- Label and input for link_to_diagram end -->
+
+  <!-- Label and input for project_id start -->
+  <!-- Input for project_id start -->
+  <%= f.hidden_field :project_id, value: @project.id %>
+  <!-- Input for project_id end -->
+  <!-- Label and input for project_id end -->
+
+  <!-- Label and input for notes start -->
+  <div class="form-group">
+    <%= f.label :notes %>
+    <!-- Input for notes start -->
+    <%= f.text_area :notes, rows: "3", class: "form-control" %>
+    <!-- Input for notes end -->
+  </div>
+  <!-- Label and input for notes end -->
+
+  <!-- Label and input for dsl start -->
+  <div class="form-group">
+    <%= f.label :dsl %>
+    <!-- Input for dsl start -->
+    <%= f.text_area :dsl, rows: "3", class: "form-control" %>
+    <!-- Input for dsl end -->
+  </div>
+  <!-- Label and input for dsl end -->
+
+  <!-- Label and input for diagram start -->
+  <div class="form-group">
+    <%= f.label :diagram %>
+
+    <!-- Input for diagram start -->
+    <%= f.text_field :diagram, class: "form-control" %>
+    <!-- Input for diagram end -->
+  </div>
+  <!-- Label and input for diagram end -->
+
+  <!-- Label and input for table start -->
+  <div class="form-group">
+    <%= f.label :table %>
+
+    <!-- Input for table start -->
+    <%= f.text_field :table, class: "form-control" %>
+    <!-- Input for table end -->
+  </div>
+  <!-- Label and input for table end -->
+
+  <!-- Label and input for column start -->
+  <div class="form-group">
+    <%= f.label :column %>
+
+    <!-- Input for column start -->
+    <%= f.text_field :column, class: "form-control" %>
+    <!-- Input for column end -->
+  </div>
+  <!-- Label and input for column end -->
+
+  <%= f.submit "Create state machine", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

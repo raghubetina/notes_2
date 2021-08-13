@@ -24,7 +24,12 @@ class ErdUrlsController < ApplicationController
     @erd_url = ErdUrl.new(erd_url_params)
 
     if @erd_url.save
-      redirect_to @erd_url, notice: 'Erd url was successfully created.'
+      message = 'ErdUrl was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @erd_url, notice: message
+      end
     else
       render :new
     end

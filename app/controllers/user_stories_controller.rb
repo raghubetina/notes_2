@@ -24,7 +24,12 @@ class UserStoriesController < ApplicationController
     @user_story = UserStory.new(user_story_params)
 
     if @user_story.save
-      redirect_to @user_story, notice: 'User story was successfully created.'
+      message = 'UserStory was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @user_story, notice: message
+      end
     else
       render :new
     end

@@ -1,0 +1,42 @@
+<!-- Form api_integration start -->
+<%= form_with(model: @api_integration, local: true) do |f| %>
+<!-- Form api_integration end -->
+
+  <!-- Label and input for documentation start -->
+  <div class="form-group">
+    <%= f.label :documentation %>
+
+    <!-- Input for documentation start -->
+    <%= f.text_field :documentation, class: "form-control" %>
+    <!-- Input for documentation end -->
+  </div>
+  <!-- Label and input for documentation end -->
+
+  <!-- Label and input for purpose start -->
+  <div class="form-group">
+    <%= f.label :purpose %>
+
+    <!-- Input for purpose start -->
+    <%= f.text_field :purpose, class: "form-control" %>
+    <!-- Input for purpose end -->
+  </div>
+  <!-- Label and input for purpose end -->
+
+  <!-- Label and input for project_id start -->
+  <!-- Input for project_id start -->
+  <%= f.hidden_field :project_id, value: @project.id %>
+  <!-- Input for project_id end -->
+  <!-- Label and input for project_id end -->
+
+  <!-- Label and input for example_endopoint start -->
+  <div class="form-group">
+    <%= f.label :example_endopoint %>
+
+    <!-- Input for example_endopoint start -->
+    <%= f.text_field :example_endopoint, class: "form-control" %>
+    <!-- Input for example_endopoint end -->
+  </div>
+  <!-- Label and input for example_endopoint end -->
+
+  <%= f.submit "Create api integration", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

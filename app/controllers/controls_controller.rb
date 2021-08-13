@@ -24,7 +24,12 @@ class ControlsController < ApplicationController
     @control = Control.new(control_params)
 
     if @control.save
-      redirect_to @control, notice: 'Control was successfully created.'
+      message = 'Control was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @control, notice: message
+      end
     else
       render :new
     end

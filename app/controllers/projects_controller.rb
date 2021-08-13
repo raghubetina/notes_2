@@ -8,6 +8,14 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    @erd_url = ErdUrl.new
+    @scheduled_task = ScheduledTask.new
+    @state_machine = StateMachine.new
+    @callback = Callback.new
+    @screen = Screen.new
+    @calculation = Calculation.new
+    @api_integration = ApiIntegration.new
+    @user_story = UserStory.new
   end
 
   # GET /projects/new
@@ -24,7 +32,12 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      redirect_to @project, notice: 'Project was successfully created.'
+      message = 'Project was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @project, notice: message
+      end
     else
       render :new
     end

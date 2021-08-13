@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
+    @callback = Callback.new
   end
 
   # GET /events/new

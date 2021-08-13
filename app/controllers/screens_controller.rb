@@ -8,6 +8,7 @@ class ScreensController < ApplicationController
 
   # GET /screens/1
   def show
+    @control = Control.new
   end
 
   # GET /screens/new
@@ -24,7 +25,12 @@ class ScreensController < ApplicationController
     @screen = Screen.new(screen_params)
 
     if @screen.save
-      redirect_to @screen, notice: 'Screen was successfully created.'
+      message = 'Screen was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @screen, notice: message
+      end
     else
       render :new
     end

@@ -24,7 +24,12 @@ class CalculationsController < ApplicationController
     @calculation = Calculation.new(calculation_params)
 
     if @calculation.save
-      redirect_to @calculation, notice: 'Calculation was successfully created.'
+      message = 'Calculation was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @calculation, notice: message
+      end
     else
       render :new
     end

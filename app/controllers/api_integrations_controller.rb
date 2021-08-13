@@ -24,7 +24,12 @@ class ApiIntegrationsController < ApplicationController
     @api_integration = ApiIntegration.new(api_integration_params)
 
     if @api_integration.save
-      redirect_to @api_integration, notice: 'Api integration was successfully created.'
+      message = 'ApiIntegration was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @api_integration, notice: message
+      end
     else
       render :new
     end

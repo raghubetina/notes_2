@@ -1,0 +1,41 @@
+<!-- Form control start -->
+<%= form_with(model: @control, local: true) do |f| %>
+<!-- Form control end -->
+
+  <!-- Label and input for on_screen_id start -->
+  <!-- Input for on_screen_id start -->
+  <%= f.hidden_field :on_screen_id, value: @screen.id %>
+  <!-- Input for on_screen_id end -->
+  <!-- Label and input for on_screen_id end -->
+
+  <!-- Label and input for leads_to_screen_id start -->
+  <div class="form-group">
+    <%= f.label :leads_to_screen_id %>
+
+    <!-- Input for leads_to_screen_id start -->
+    <%= f.text_field :leads_to_screen_id, class: "form-control" %>
+    <!-- Input for leads_to_screen_id end -->
+  </div>
+  <!-- Label and input for leads_to_screen_id end -->
+
+  <!-- Label and input for copy start -->
+  <div class="form-group">
+    <%= f.label :copy %>
+
+    <!-- Input for copy start -->
+    <%= f.text_field :copy, class: "form-control" %>
+    <!-- Input for copy end -->
+  </div>
+  <!-- Label and input for copy end -->
+
+  <!-- Label and input for crud start -->
+  <div class="form-group">
+    <%= f.label :crud %>
+    <!-- Input for crud start -->
+    <%= f.text_area :crud, rows: "3", class: "form-control" %>
+    <!-- Input for crud end -->
+  </div>
+  <!-- Label and input for crud end -->
+
+  <%= f.submit "Create control", class: "btn btn-block btn-outline-secondary" %>
+<% end %>
