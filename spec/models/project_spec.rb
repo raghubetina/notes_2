@@ -4,6 +4,8 @@ RSpec.describe Project, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:callbacks) }
+
     it { should have_many(:screens) }
 
     it { should have_many(:calculations) }
