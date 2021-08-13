@@ -12,6 +12,8 @@ class ProjectResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :screens
+
   has_many   :calculations
 
   has_many   :api_integrations

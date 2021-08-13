@@ -10,6 +10,8 @@ class ScreenResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :project
+
   # Indirect associations
 
 end
