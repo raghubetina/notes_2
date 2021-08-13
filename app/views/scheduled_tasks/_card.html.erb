@@ -1,0 +1,56 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Scheduled Task #<%= scheduled_task.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Recurring</dt>
+      <!-- Display recurring start -->
+      <dd><%= scheduled_task.recurring %></dd>
+      <!-- Display recurring end -->
+
+      <dt>Occurence schedule</dt>
+      <!-- Display occurence_schedule start -->
+      <dd><%= scheduled_task.occurence_schedule %></dd>
+      <!-- Display occurence_schedule end -->
+
+      <dt>Project</dt>
+      <!-- Display project_id start -->
+      <dd><%= scheduled_task.project_id %></dd>
+      <!-- Display project_id end -->
+
+      <dt>Description</dt>
+      <!-- Display description start -->
+      <dd><%= scheduled_task.description %></dd>
+      <!-- Display description end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back scheduled_task, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link scheduled_task start -->
+      <div class="col">
+        <%= link_to edit_scheduled_task_url(scheduled_task), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link scheduled_task end -->
+
+      <!-- Delete link scheduled_task start -->
+      <div class="col">
+        <%= link_to scheduled_task, method: :delete, data: { confirm: "Do you really want to delete this scheduled_task?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link scheduled_task end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(scheduled_task.updated_at) %> ago
+  </div>
+</div>

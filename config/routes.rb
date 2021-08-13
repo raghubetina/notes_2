@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :scheduled_tasks
   resources :state_machines
   resources :callbacks
   resources :screens

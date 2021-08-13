@@ -1,0 +1,108 @@
+<% was_validated = scheduled_task.errors.any? %>
+
+<%= form_with(model: scheduled_task, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for recurring start -->
+  <div class="form-check">
+    <% recurring_class = "form-check-input" %>
+    <% recurring_was_invalid = scheduled_task.errors.include?(:recurring) %>
+
+    <% if was_validated %>
+      <% if recurring_was_invalid %>
+        <% recurring_class << " is-invalid" %>
+      <% else %>
+        <% recurring_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :recurring, class: "form-check-label" do %>
+      <%= f.check_box :recurring, class: recurring_class %> Recurring
+    <% end %>
+    <% if recurring_was_invalid %>
+      <% scheduled_task.errors.full_messages_for(:recurring).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for recurring end -->
+  <!-- Label and input for occurence_schedule start -->
+  <div class="form-group">
+    <% occurence_schedule_class = "form-control" %>
+    <% occurence_schedule_was_invalid = scheduled_task.errors.include?(:occurence_schedule) %>
+
+    <% if was_validated %>
+      <% if occurence_schedule_was_invalid %>
+        <% occurence_schedule_class << " is-invalid" %>
+      <% else %>
+        <% occurence_schedule_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :occurence_schedule %>
+    <!-- Input for occurence_schedule start -->
+    <%= f.text_area :occurence_schedule, class: occurence_schedule_class, placeholder: "Enter occurence schedule" %>
+    <!-- Input for occurence_schedule end -->
+    <% if occurence_schedule_was_invalid %>
+      <% scheduled_task.errors.full_messages_for(:occurence_schedule).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for occurence_schedule end -->
+  <!-- Label and input for project_id start -->
+  <div class="form-group">
+    <% project_class = "form-control" %>
+    <% project_was_invalid = scheduled_task.errors.include?(:project) %>
+
+    <% if was_validated %>
+      <% if project_was_invalid %>
+        <% project_class << " is-invalid" %>
+      <% else %>
+        <% project_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :project_id %>
+    <!-- Input for project_id start -->
+    <%= f.number_field :project_id, class: project_class, placeholder: "Enter project" %>
+    <!-- Input for project_id end -->
+    <% if project_was_invalid %>
+      <% scheduled_task.errors.full_messages_for(:project).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for project_id end -->
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <% description_class = "form-control" %>
+    <% description_was_invalid = scheduled_task.errors.include?(:description) %>
+
+    <% if was_validated %>
+      <% if description_was_invalid %>
+        <% description_class << " is-invalid" %>
+      <% else %>
+        <% description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :description %>
+    <!-- Input for description start -->
+    <%= f.text_area :description, class: description_class, placeholder: "Enter description" %>
+    <!-- Input for description end -->
+    <% if description_was_invalid %>
+      <% scheduled_task.errors.full_messages_for(:description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for description end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
