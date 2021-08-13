@@ -42,7 +42,7 @@
 
     <%= f.label :leads_to_screen_id %>
     <!-- Input for leads_to_screen_id start -->
-    <%= f.number_field :leads_to_screen_id, class: leads_to_screen_class, placeholder: "Enter leads to screen" %>
+    <%= f.collection_select :leads_to_screen_id, Screen.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for leads_to_screen_id end -->
     <% if leads_to_screen_was_invalid %>
       <% control.errors.full_messages_for(:leads_to_screen).each do |message| %>
