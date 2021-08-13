@@ -4,6 +4,8 @@ RSpec.describe Project, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:erd_urls) }
+
     it { should have_many(:scheduled_tasks) }
 
     it { should have_many(:state_machines) }

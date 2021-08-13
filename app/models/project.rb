@@ -1,6 +1,9 @@
 class Project < ApplicationRecord
   # Direct associations
 
+  has_many   :erd_urls,
+             :dependent => :destroy
+
   has_many   :scheduled_tasks,
              :dependent => :destroy
 
