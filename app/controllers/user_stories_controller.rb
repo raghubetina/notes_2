@@ -42,8 +42,14 @@ class UserStoriesController < ApplicationController
   # DELETE /user_stories/1
   def destroy
     @user_story.destroy
-    redirect_to user_stories_url, notice: 'User story was successfully destroyed.'
+    message = "UserStory was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to user_stories_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Calculations
+
+    <a data-toggle="collapse" href="#project_calculations_new_form">
+      Add calculation
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @project.calculations.each do |calculation| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to calculation, calculation %>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <%= link_to calculation, method: :delete, data: { confirm: "Do you really want to delete this calculation" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="project_calculations_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

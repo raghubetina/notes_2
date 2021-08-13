@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Erd Urls
+
+    <a data-toggle="collapse" href="#project_erd_urls_new_form">
+      Add erd url
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @project.erd_urls.each do |erd_url| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to erd_url, erd_url %>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <%= link_to erd_url, method: :delete, data: { confirm: "Do you really want to delete this erd_url" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="project_erd_urls_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

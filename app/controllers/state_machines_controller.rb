@@ -42,8 +42,14 @@ class StateMachinesController < ApplicationController
   # DELETE /state_machines/1
   def destroy
     @state_machine.destroy
-    redirect_to state_machines_url, notice: 'State machine was successfully destroyed.'
+    message = "StateMachine was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to state_machines_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

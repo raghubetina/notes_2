@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    Api Integrations
+
+    <a data-toggle="collapse" href="#project_api_integrations_new_form">
+      Add api integration
+    </a>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <% @project.api_integrations.each do |api_integration| %>
+      <li class="list-group-item d-flex align-items-center justify-content-between">
+        <!-- Show link start -->
+        <%= link_to api_integration, api_integration %>
+        <!-- Show link end -->
+
+        <!-- Delete link start -->
+        <%= link_to api_integration, method: :delete, data: { confirm: "Do you really want to delete this api_integration" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+        <!-- Delete link end -->
+
+      </li>
+    <% end %>
+
+    <div class="card-footer">
+      <div class="collapse" id="project_api_integrations_new_form">
+        <!-- New associationcollection form start -->
+
+        <!-- New associationcollection form end -->
+      </div>
+    </div>
+
+  </ul>
+</div>

@@ -42,8 +42,14 @@ class ControlsController < ApplicationController
   # DELETE /controls/1
   def destroy
     @control.destroy
-    redirect_to controls_url, notice: 'Control was successfully destroyed.'
+    message = "Control was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to controls_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

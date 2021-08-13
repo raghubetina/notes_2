@@ -42,8 +42,14 @@ class CalculationsController < ApplicationController
   # DELETE /calculations/1
   def destroy
     @calculation.destroy
-    redirect_to calculations_url, notice: 'Calculation was successfully destroyed.'
+    message = "Calculation was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to calculations_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

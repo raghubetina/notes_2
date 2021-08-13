@@ -42,8 +42,14 @@ class CallbacksController < ApplicationController
   # DELETE /callbacks/1
   def destroy
     @callback.destroy
-    redirect_to callbacks_url, notice: 'Callback was successfully destroyed.'
+    message = "Callback was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to callbacks_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
