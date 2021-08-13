@@ -1,6 +1,9 @@
 class Project < ApplicationRecord
   # Direct associations
 
+  has_many   :state_machines,
+             :dependent => :destroy
+
   has_many   :callbacks,
              :dependent => :destroy
 
