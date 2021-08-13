@@ -12,6 +12,8 @@ class ProjectResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :state_machines
+
   has_many   :callbacks
 
   has_many   :screens
