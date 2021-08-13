@@ -17,7 +17,11 @@
 
       <dt>Project</dt>
       <!-- Display project_id start -->
-      <dd><%= api_integration.project_id %></dd>
+      <dd>
+        <% if @api_integration.project.present? %>
+          <%= link_to api_integration.project, api_integration.project %>
+        <% end %>
+      </dd>
       <!-- Display project_id end -->
 
       <dt>Example endopoint</dt>

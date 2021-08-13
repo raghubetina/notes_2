@@ -7,12 +7,20 @@
     <dl class="mb-1">
       <dt>On screen</dt>
       <!-- Display on_screen_id start -->
-      <dd><%= control.on_screen_id %></dd>
+      <dd>
+        <% if @control.on_screen.present? %>
+          <%= link_to control.on_screen, control.on_screen %>
+        <% end %>
+      </dd>
       <!-- Display on_screen_id end -->
 
       <dt>Leads to screen</dt>
       <!-- Display leads_to_screen_id start -->
-      <dd><%= control.leads_to_screen_id %></dd>
+      <dd>
+        <% if @control.leads_to_screen.present? %>
+          <%= link_to control.leads_to_screen, control.leads_to_screen %>
+        <% end %>
+      </dd>
       <!-- Display leads_to_screen_id end -->
 
       <dt>Copy</dt>

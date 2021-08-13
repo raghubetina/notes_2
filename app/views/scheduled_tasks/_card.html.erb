@@ -17,7 +17,11 @@
 
       <dt>Project</dt>
       <!-- Display project_id start -->
-      <dd><%= scheduled_task.project_id %></dd>
+      <dd>
+        <% if @scheduled_task.project.present? %>
+          <%= link_to scheduled_task.project, scheduled_task.project %>
+        <% end %>
+      </dd>
       <!-- Display project_id end -->
 
       <dt>Description</dt>

@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Project</dt>
       <!-- Display project_id start -->
-      <dd><%= erd_url.project_id %></dd>
+      <dd>
+        <% if @erd_url.project.present? %>
+          <%= link_to erd_url.project, erd_url.project %>
+        <% end %>
+      </dd>
       <!-- Display project_id end -->
 
       <dt>Ideas url</dt>

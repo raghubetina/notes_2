@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Project</dt>
       <!-- Display project_id start -->
-      <dd><%= screen.project_id %></dd>
+      <dd>
+        <% if @screen.project.present? %>
+          <%= link_to screen.project, screen.project %>
+        <% end %>
+      </dd>
       <!-- Display project_id end -->
 
       <dt>Wireframe</dt>

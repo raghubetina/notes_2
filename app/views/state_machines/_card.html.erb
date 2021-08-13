@@ -12,7 +12,11 @@
 
       <dt>Project</dt>
       <!-- Display project_id start -->
-      <dd><%= state_machine.project_id %></dd>
+      <dd>
+        <% if @state_machine.project.present? %>
+          <%= link_to state_machine.project, state_machine.project %>
+        <% end %>
+      </dd>
       <!-- Display project_id end -->
 
       <dt>Notes</dt>
