@@ -3,7 +3,8 @@ class StateMachinesController < ApplicationController
 
   # GET /state_machines
   def index
-    @state_machines = StateMachine.page(params[:page]).per(10)
+    @q = StateMachine.ransack(params[:q])
+    @state_machines = @q.result(:distinct => true).includes(:project).page(params[:page]).per(10)
   end
 
   # GET /state_machines/1

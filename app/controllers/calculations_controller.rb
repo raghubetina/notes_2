@@ -3,7 +3,8 @@ class CalculationsController < ApplicationController
 
   # GET /calculations
   def index
-    @calculations = Calculation.page(params[:page]).per(10)
+    @q = Calculation.ransack(params[:q])
+    @calculations = @q.result(:distinct => true).includes(:project).page(params[:page]).per(10)
   end
 
   # GET /calculations/1

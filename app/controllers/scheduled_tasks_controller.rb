@@ -3,7 +3,8 @@ class ScheduledTasksController < ApplicationController
 
   # GET /scheduled_tasks
   def index
-    @scheduled_tasks = ScheduledTask.page(params[:page]).per(10)
+    @q = ScheduledTask.ransack(params[:q])
+    @scheduled_tasks = @q.result(:distinct => true).includes(:project).page(params[:page]).per(10)
   end
 
   # GET /scheduled_tasks/1

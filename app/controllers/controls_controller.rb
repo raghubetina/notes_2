@@ -3,7 +3,8 @@ class ControlsController < ApplicationController
 
   # GET /controls
   def index
-    @controls = Control.page(params[:page]).per(10)
+    @q = Control.ransack(params[:q])
+    @controls = @q.result(:distinct => true).includes(:on_screen, :leads_to_screen).page(params[:page]).per(10)
   end
 
   # GET /controls/1

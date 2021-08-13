@@ -3,7 +3,8 @@ class CallbacksController < ApplicationController
 
   # GET /callbacks
   def index
-    @callbacks = Callback.page(params[:page]).per(10)
+    @q = Callback.ransack(params[:q])
+    @callbacks = @q.result(:distinct => true).includes(:project, :event).page(params[:page]).per(10)
   end
 
   # GET /callbacks/1

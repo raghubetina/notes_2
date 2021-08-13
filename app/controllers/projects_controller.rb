@@ -5,7 +5,8 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = current_user.projects.page(params[:page]).per(10)
+    @q = current_user.projects.ransack(params[:q])
+    @projects = @q.result(:distinct => true).includes(:user, :user_stories, :api_integrations, :calculations, :screens, :callbacks, :state_machines, :scheduled_tasks, :erd_urls).page(params[:page]).per(10)
   end
 
   # GET /projects/1

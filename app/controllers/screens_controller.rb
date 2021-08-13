@@ -3,7 +3,8 @@ class ScreensController < ApplicationController
 
   # GET /screens
   def index
-    @screens = Screen.page(params[:page]).per(10)
+    @q = Screen.ransack(params[:q])
+    @screens = @q.result(:distinct => true).includes(:project, :outgoing_controls, :incoming_controls, :leads_to_screens, :incoming_screens).page(params[:page]).per(10)
   end
 
   # GET /screens/1

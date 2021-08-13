@@ -3,7 +3,8 @@ class ErdUrlsController < ApplicationController
 
   # GET /erd_urls
   def index
-    @erd_urls = ErdUrl.page(params[:page]).per(10)
+    @q = ErdUrl.ransack(params[:q])
+    @erd_urls = @q.result(:distinct => true).includes(:project).page(params[:page]).per(10)
   end
 
   # GET /erd_urls/1
