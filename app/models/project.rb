@@ -1,6 +1,9 @@
 class Project < ApplicationRecord
   # Direct associations
 
+  has_many   :screens,
+             :dependent => :destroy
+
   has_many   :calculations,
              :dependent => :destroy
 
