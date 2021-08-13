@@ -13,7 +13,7 @@
     <%= f.label :project_id %>
 
     <!-- Input for project_id start -->
-    <%= f.text_field :project_id, class: "form-control" %>
+    <%= f.collection_select :project_id, Project.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for project_id end -->
   </div>
   <!-- Label and input for project_id end -->

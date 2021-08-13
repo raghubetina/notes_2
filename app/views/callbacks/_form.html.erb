@@ -42,7 +42,7 @@
 
     <%= f.label :project_id %>
     <!-- Input for project_id start -->
-    <%= f.number_field :project_id, class: project_class, placeholder: "Enter project" %>
+    <%= f.collection_select :project_id, Project.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for project_id end -->
     <% if project_was_invalid %>
       <% callback.errors.full_messages_for(:project).each do |message| %>
