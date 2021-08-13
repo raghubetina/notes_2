@@ -1,6 +1,9 @@
 class Control < ApplicationRecord
   # Direct associations
 
+  belongs_to :on_screen,
+             :class_name => "Screen"
+
   # Indirect associations
 
   # Validations
