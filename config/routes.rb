@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :controls
   resources :events
   resources :calculations
   resources :api_integrations

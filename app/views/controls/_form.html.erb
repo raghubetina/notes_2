@@ -1,0 +1,109 @@
+<% was_validated = control.errors.any? %>
+
+<%= form_with(model: control, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for on_screen_id start -->
+  <div class="form-group">
+    <% on_screen_class = "form-control" %>
+    <% on_screen_was_invalid = control.errors.include?(:on_screen) %>
+
+    <% if was_validated %>
+      <% if on_screen_was_invalid %>
+        <% on_screen_class << " is-invalid" %>
+      <% else %>
+        <% on_screen_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :on_screen_id %>
+    <!-- Input for on_screen_id start -->
+    <%= f.number_field :on_screen_id, class: on_screen_class, placeholder: "Enter on screen" %>
+    <!-- Input for on_screen_id end -->
+    <% if on_screen_was_invalid %>
+      <% control.errors.full_messages_for(:on_screen).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for on_screen_id end -->
+  <!-- Label and input for leads_to_screen_id start -->
+  <div class="form-group">
+    <% leads_to_screen_class = "form-control" %>
+    <% leads_to_screen_was_invalid = control.errors.include?(:leads_to_screen) %>
+
+    <% if was_validated %>
+      <% if leads_to_screen_was_invalid %>
+        <% leads_to_screen_class << " is-invalid" %>
+      <% else %>
+        <% leads_to_screen_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :leads_to_screen_id %>
+    <!-- Input for leads_to_screen_id start -->
+    <%= f.number_field :leads_to_screen_id, class: leads_to_screen_class, placeholder: "Enter leads to screen" %>
+    <!-- Input for leads_to_screen_id end -->
+    <% if leads_to_screen_was_invalid %>
+      <% control.errors.full_messages_for(:leads_to_screen).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for leads_to_screen_id end -->
+  <!-- Label and input for copy start -->
+  <div class="form-group">
+    <% copy_class = "form-control" %>
+    <% copy_was_invalid = control.errors.include?(:copy) %>
+
+    <% if was_validated %>
+      <% if copy_was_invalid %>
+        <% copy_class << " is-invalid" %>
+      <% else %>
+        <% copy_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :copy %>
+    <!-- Input for copy start -->
+    <%= f.text_field :copy, class: copy_class, placeholder: "Enter copy" %>
+    <!-- Input for copy end -->
+    <% if copy_was_invalid %>
+      <% control.errors.full_messages_for(:copy).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for copy end -->
+  <!-- Label and input for crud start -->
+  <div class="form-group">
+    <% crud_class = "form-control" %>
+    <% crud_was_invalid = control.errors.include?(:crud) %>
+
+    <% if was_validated %>
+      <% if crud_was_invalid %>
+        <% crud_class << " is-invalid" %>
+      <% else %>
+        <% crud_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :crud %>
+    <!-- Input for crud start -->
+    <%= f.text_area :crud, class: crud_class, placeholder: "Enter crud" %>
+    <!-- Input for crud end -->
+    <% if crud_was_invalid %>
+      <% control.errors.full_messages_for(:crud).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for crud end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
