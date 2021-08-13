@@ -3,7 +3,7 @@ class ErdUrlsController < ApplicationController
 
   # GET /erd_urls
   def index
-    @erd_urls = ErdUrl.all
+    @erd_urls = ErdUrl.page(params[:page]).per(10)
   end
 
   # GET /erd_urls/1

@@ -3,7 +3,7 @@ class CalculationsController < ApplicationController
 
   # GET /calculations
   def index
-    @calculations = Calculation.all
+    @calculations = Calculation.page(params[:page]).per(10)
   end
 
   # GET /calculations/1

@@ -3,7 +3,7 @@ class UserStoriesController < ApplicationController
 
   # GET /user_stories
   def index
-    @user_stories = UserStory.all
+    @user_stories = UserStory.page(params[:page]).per(10)
   end
 
   # GET /user_stories/1

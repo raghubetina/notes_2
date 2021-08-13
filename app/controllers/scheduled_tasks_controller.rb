@@ -3,7 +3,7 @@ class ScheduledTasksController < ApplicationController
 
   # GET /scheduled_tasks
   def index
-    @scheduled_tasks = ScheduledTask.all
+    @scheduled_tasks = ScheduledTask.page(params[:page]).per(10)
   end
 
   # GET /scheduled_tasks/1

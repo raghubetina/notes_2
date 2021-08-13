@@ -3,7 +3,7 @@ class ScreensController < ApplicationController
 
   # GET /screens
   def index
-    @screens = Screen.all
+    @screens = Screen.page(params[:page]).per(10)
   end
 
   # GET /screens/1

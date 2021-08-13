@@ -3,7 +3,7 @@ class ControlsController < ApplicationController
 
   # GET /controls
   def index
-    @controls = Control.all
+    @controls = Control.page(params[:page]).per(10)
   end
 
   # GET /controls/1

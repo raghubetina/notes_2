@@ -3,7 +3,7 @@ class CallbacksController < ApplicationController
 
   # GET /callbacks
   def index
-    @callbacks = Callback.all
+    @callbacks = Callback.page(params[:page]).per(10)
   end
 
   # GET /callbacks/1

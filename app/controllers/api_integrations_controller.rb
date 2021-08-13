@@ -3,7 +3,7 @@ class ApiIntegrationsController < ApplicationController
 
   # GET /api_integrations
   def index
-    @api_integrations = ApiIntegration.all
+    @api_integrations = ApiIntegration.page(params[:page]).per(10)
   end
 
   # GET /api_integrations/1
