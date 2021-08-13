@@ -1,0 +1,83 @@
+<% was_validated = erd_url.errors.any? %>
+
+<%= form_with(model: erd_url, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for project_id start -->
+  <div class="form-group">
+    <% project_class = "form-control" %>
+    <% project_was_invalid = erd_url.errors.include?(:project) %>
+
+    <% if was_validated %>
+      <% if project_was_invalid %>
+        <% project_class << " is-invalid" %>
+      <% else %>
+        <% project_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :project_id %>
+    <!-- Input for project_id start -->
+    <%= f.number_field :project_id, class: project_class, placeholder: "Enter project" %>
+    <!-- Input for project_id end -->
+    <% if project_was_invalid %>
+      <% erd_url.errors.full_messages_for(:project).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for project_id end -->
+  <!-- Label and input for ideas_url start -->
+  <div class="form-group">
+    <% ideas_url_class = "form-control" %>
+    <% ideas_url_was_invalid = erd_url.errors.include?(:ideas_url) %>
+
+    <% if was_validated %>
+      <% if ideas_url_was_invalid %>
+        <% ideas_url_class << " is-invalid" %>
+      <% else %>
+        <% ideas_url_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :ideas_url %>
+    <!-- Input for ideas_url start -->
+    <%= f.text_field :ideas_url, class: ideas_url_class, placeholder: "Enter ideas url" %>
+    <!-- Input for ideas_url end -->
+    <% if ideas_url_was_invalid %>
+      <% erd_url.errors.full_messages_for(:ideas_url).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for ideas_url end -->
+  <!-- Label and input for image start -->
+  <div class="form-group">
+    <% image_class = "form-control" %>
+    <% image_was_invalid = erd_url.errors.include?(:image) %>
+
+    <% if was_validated %>
+      <% if image_was_invalid %>
+        <% image_class << " is-invalid" %>
+      <% else %>
+        <% image_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :image %>
+    <!-- Input for image start -->
+    <%= f.text_field :image, class: image_class, placeholder: "Enter image" %>
+    <!-- Input for image end -->
+    <% if image_was_invalid %>
+      <% erd_url.errors.full_messages_for(:image).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for image end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
