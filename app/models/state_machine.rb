@@ -1,4 +1,6 @@
 class StateMachine < ApplicationRecord
+  mount_uploader :diagram, DiagramUploader
+
   # Direct associations
 
   belongs_to :project,

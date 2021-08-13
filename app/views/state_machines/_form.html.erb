@@ -120,7 +120,7 @@
 
     <%= f.label :diagram %>
     <!-- Input for diagram start -->
-    <%= f.text_field :diagram, class: diagram_class, placeholder: "Enter diagram" %>
+    <%= f.file_field :diagram, class: "form-control" %>
     <!-- Input for diagram end -->
     <% if diagram_was_invalid %>
       <% state_machine.errors.full_messages_for(:diagram).each do |message| %>

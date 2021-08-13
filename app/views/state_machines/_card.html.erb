@@ -27,7 +27,9 @@
 
       <dt>Diagram</dt>
       <!-- Display diagram start -->
-      <dd><%= state_machine.diagram %></dd>
+      <dd>
+        <%= cl_image_tag @state_machine.diagram, class: "img-fluid" %>
+      </dd>
       <!-- Display diagram end -->
 
       <dt>Table</dt>

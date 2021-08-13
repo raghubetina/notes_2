@@ -12,7 +12,9 @@
 
       <dt>Wireframe</dt>
       <!-- Display wireframe start -->
-      <dd><%= screen.wireframe %></dd>
+      <dd>
+        <%= cl_image_tag @screen.wireframe, class: "img-fluid" %>
+      </dd>
       <!-- Display wireframe end -->
 
       <dt>Description</dt>

@@ -1,4 +1,6 @@
 class Screen < ApplicationRecord
+  mount_uploader :wireframe, WireframeUploader
+
   # Direct associations
 
   has_many   :incoming_controls,
