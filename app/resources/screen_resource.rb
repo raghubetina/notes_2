@@ -10,6 +10,10 @@ class ScreenResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :outgoing_controls,
+             resource: ControlResource,
+             foreign_key: :on_screen_id
+
   belongs_to :project
 
   # Indirect associations
