@@ -1,6 +1,9 @@
 class Project < ApplicationRecord
   # Direct associations
 
+  has_many   :calculations,
+             :dependent => :destroy
+
   has_many   :api_integrations,
              :dependent => :destroy
 
