@@ -1,6 +1,9 @@
 class Event < ApplicationRecord
   # Direct associations
 
+  has_many   :callbacks,
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations

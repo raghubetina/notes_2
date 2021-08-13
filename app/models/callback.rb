@@ -1,6 +1,8 @@
 class Callback < ApplicationRecord
   # Direct associations
 
+  belongs_to :event
+
   belongs_to :project
 
   # Indirect associations
