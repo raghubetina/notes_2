@@ -9,6 +9,9 @@ class ControlResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :leads_to_screen,
+             resource: ScreenResource
+
   belongs_to :on_screen,
              resource: ScreenResource
 

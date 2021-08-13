@@ -10,6 +10,10 @@ class ScreenResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :incoming_controls,
+             resource: ControlResource,
+             foreign_key: :leads_to_screen_id
+
   has_many   :outgoing_controls,
              resource: ControlResource,
              foreign_key: :on_screen_id
