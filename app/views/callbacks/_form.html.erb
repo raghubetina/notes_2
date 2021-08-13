@@ -1,0 +1,83 @@
+<% was_validated = callback.errors.any? %>
+
+<%= form_with(model: callback, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for event_id start -->
+  <div class="form-group">
+    <% event_class = "form-control" %>
+    <% event_was_invalid = callback.errors.include?(:event) %>
+
+    <% if was_validated %>
+      <% if event_was_invalid %>
+        <% event_class << " is-invalid" %>
+      <% else %>
+        <% event_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :event_id %>
+    <!-- Input for event_id start -->
+    <%= f.number_field :event_id, class: event_class, placeholder: "Enter event" %>
+    <!-- Input for event_id end -->
+    <% if event_was_invalid %>
+      <% callback.errors.full_messages_for(:event).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for event_id end -->
+  <!-- Label and input for project_id start -->
+  <div class="form-group">
+    <% project_class = "form-control" %>
+    <% project_was_invalid = callback.errors.include?(:project) %>
+
+    <% if was_validated %>
+      <% if project_was_invalid %>
+        <% project_class << " is-invalid" %>
+      <% else %>
+        <% project_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :project_id %>
+    <!-- Input for project_id start -->
+    <%= f.number_field :project_id, class: project_class, placeholder: "Enter project" %>
+    <!-- Input for project_id end -->
+    <% if project_was_invalid %>
+      <% callback.errors.full_messages_for(:project).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for project_id end -->
+  <!-- Label and input for description start -->
+  <div class="form-group">
+    <% description_class = "form-control" %>
+    <% description_was_invalid = callback.errors.include?(:description) %>
+
+    <% if was_validated %>
+      <% if description_was_invalid %>
+        <% description_class << " is-invalid" %>
+      <% else %>
+        <% description_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :description %>
+    <!-- Input for description start -->
+    <%= f.text_field :description, class: description_class, placeholder: "Enter description" %>
+    <!-- Input for description end -->
+    <% if description_was_invalid %>
+      <% callback.errors.full_messages_for(:description).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for description end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>

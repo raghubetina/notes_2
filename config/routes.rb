@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :callbacks
   resources :screens
   resources :user_stories
   resources :projects
