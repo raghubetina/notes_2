@@ -1,0 +1,135 @@
+<% was_validated = user_story.errors.any? %>
+
+<%= form_with(model: user_story, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for role start -->
+  <div class="form-group">
+    <% role_class = "form-control" %>
+    <% role_was_invalid = user_story.errors.include?(:role) %>
+
+    <% if was_validated %>
+      <% if role_was_invalid %>
+        <% role_class << " is-invalid" %>
+      <% else %>
+        <% role_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :role %>
+    <!-- Input for role start -->
+    <%= f.text_field :role, class: role_class, placeholder: "Enter role" %>
+    <!-- Input for role end -->
+    <% if role_was_invalid %>
+      <% user_story.errors.full_messages_for(:role).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for role end -->
+  <!-- Label and input for capability start -->
+  <div class="form-group">
+    <% capability_class = "form-control" %>
+    <% capability_was_invalid = user_story.errors.include?(:capability) %>
+
+    <% if was_validated %>
+      <% if capability_was_invalid %>
+        <% capability_class << " is-invalid" %>
+      <% else %>
+        <% capability_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :capability %>
+    <!-- Input for capability start -->
+    <%= f.text_area :capability, class: capability_class, placeholder: "Enter capability" %>
+    <!-- Input for capability end -->
+    <% if capability_was_invalid %>
+      <% user_story.errors.full_messages_for(:capability).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for capability end -->
+  <!-- Label and input for benefit start -->
+  <div class="form-group">
+    <% benefit_class = "form-control" %>
+    <% benefit_was_invalid = user_story.errors.include?(:benefit) %>
+
+    <% if was_validated %>
+      <% if benefit_was_invalid %>
+        <% benefit_class << " is-invalid" %>
+      <% else %>
+        <% benefit_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :benefit %>
+    <!-- Input for benefit start -->
+    <%= f.text_area :benefit, class: benefit_class, placeholder: "Enter benefit" %>
+    <!-- Input for benefit end -->
+    <% if benefit_was_invalid %>
+      <% user_story.errors.full_messages_for(:benefit).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for benefit end -->
+  <!-- Label and input for project_id start -->
+  <div class="form-group">
+    <% project_class = "form-control" %>
+    <% project_was_invalid = user_story.errors.include?(:project) %>
+
+    <% if was_validated %>
+      <% if project_was_invalid %>
+        <% project_class << " is-invalid" %>
+      <% else %>
+        <% project_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :project_id %>
+    <!-- Input for project_id start -->
+    <%= f.number_field :project_id, class: project_class, placeholder: "Enter project" %>
+    <!-- Input for project_id end -->
+    <% if project_was_invalid %>
+      <% user_story.errors.full_messages_for(:project).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for project_id end -->
+  <!-- Label and input for notes start -->
+  <div class="form-group">
+    <% note_class = "form-control" %>
+    <% note_was_invalid = user_story.errors.include?(:note) %>
+
+    <% if was_validated %>
+      <% if note_was_invalid %>
+        <% note_class << " is-invalid" %>
+      <% else %>
+        <% note_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :notes %>
+    <!-- Input for notes start -->
+    <%= f.text_area :notes, class: note_class, placeholder: "Enter note" %>
+    <!-- Input for notes end -->
+    <% if note_was_invalid %>
+      <% user_story.errors.full_messages_for(:note).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for notes end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
