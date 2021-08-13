@@ -13,7 +13,7 @@ class Api::V1::CalculationsController < Api::V1::GraphitiController
     calculation = CalculationResource.build(params)
 
     if calculation.save
-      render jsonapi: calculation, status: 201
+      render jsonapi: calculation, status: :created
     else
       render jsonapi_errors: calculation
     end
@@ -33,7 +33,7 @@ class Api::V1::CalculationsController < Api::V1::GraphitiController
     calculation = CalculationResource.find(params)
 
     if calculation.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: calculation
     end

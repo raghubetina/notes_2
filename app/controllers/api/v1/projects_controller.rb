@@ -13,7 +13,7 @@ class Api::V1::ProjectsController < Api::V1::GraphitiController
     project = ProjectResource.build(params)
 
     if project.save
-      render jsonapi: project, status: 201
+      render jsonapi: project, status: :created
     else
       render jsonapi_errors: project
     end
@@ -33,7 +33,7 @@ class Api::V1::ProjectsController < Api::V1::GraphitiController
     project = ProjectResource.find(params)
 
     if project.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: project
     end

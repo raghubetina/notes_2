@@ -13,7 +13,7 @@ class Api::V1::ControlsController < Api::V1::GraphitiController
     control = ControlResource.build(params)
 
     if control.save
-      render jsonapi: control, status: 201
+      render jsonapi: control, status: :created
     else
       render jsonapi_errors: control
     end
@@ -33,7 +33,7 @@ class Api::V1::ControlsController < Api::V1::GraphitiController
     control = ControlResource.find(params)
 
     if control.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: control
     end

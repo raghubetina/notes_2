@@ -1,15 +1,15 @@
 class ControlsController < ApplicationController
-  before_action :set_control, only: [:show, :edit, :update, :destroy]
+  before_action :set_control, only: %i[show edit update destroy]
 
   # GET /controls
   def index
     @q = Control.ransack(params[:q])
-    @controls = @q.result(:distinct => true).includes(:on_screen, :leads_to_screen).page(params[:page]).per(10)
+    @controls = @q.result(distinct: true).includes(:on_screen,
+                                                   :leads_to_screen).page(params[:page]).per(10)
   end
 
   # GET /controls/1
-  def show
-  end
+  def show; end
 
   # GET /controls/new
   def new
@@ -17,17 +17,16 @@ class ControlsController < ApplicationController
   end
 
   # GET /controls/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /controls
   def create
     @control = Control.new(control_params)
 
     if @control.save
-      message = 'Control was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Control was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @control, notice: message
       end
@@ -39,7 +38,7 @@ class ControlsController < ApplicationController
   # PATCH/PUT /controls/1
   def update
     if @control.update(control_params)
-      redirect_to @control, notice: 'Control was successfully updated.'
+      redirect_to @control, notice: "Control was successfully updated."
     else
       render :edit
     end
@@ -49,22 +48,23 @@ class ControlsController < ApplicationController
   def destroy
     @control.destroy
     message = "Control was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to controls_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_control
-      @control = Control.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def control_params
-      params.require(:control).permit(:on_screen_id, :leads_to_screen_id, :copy, :crud)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_control
+    @control = Control.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def control_params
+    params.require(:control).permit(:on_screen_id, :leads_to_screen_id,
+                                    :copy, :crud)
+  end
 end

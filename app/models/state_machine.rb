@@ -4,7 +4,7 @@ class StateMachine < ApplicationRecord
   # Direct associations
 
   belongs_to :project,
-             :counter_cache => true
+             counter_cache: true
 
   # Indirect associations
 
@@ -15,5 +15,4 @@ class StateMachine < ApplicationRecord
   def to_s
     column
   end
-
 end

@@ -13,7 +13,7 @@ class Api::V1::ScreensController < Api::V1::GraphitiController
     screen = ScreenResource.build(params)
 
     if screen.save
-      render jsonapi: screen, status: 201
+      render jsonapi: screen, status: :created
     else
       render jsonapi_errors: screen
     end
@@ -33,7 +33,7 @@ class Api::V1::ScreensController < Api::V1::GraphitiController
     screen = ScreenResource.find(params)
 
     if screen.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: screen
     end

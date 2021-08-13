@@ -14,5 +14,4 @@ class ErdUrl < ApplicationRecord
   def to_s
     ideas_url
   end
-
 end

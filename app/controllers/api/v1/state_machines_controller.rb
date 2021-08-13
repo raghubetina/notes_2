@@ -13,7 +13,7 @@ class Api::V1::StateMachinesController < Api::V1::GraphitiController
     state_machine = StateMachineResource.build(params)
 
     if state_machine.save
-      render jsonapi: state_machine, status: 201
+      render jsonapi: state_machine, status: :created
     else
       render jsonapi_errors: state_machine
     end
@@ -33,7 +33,7 @@ class Api::V1::StateMachinesController < Api::V1::GraphitiController
     state_machine = StateMachineResource.find(params)
 
     if state_machine.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: state_machine
     end

@@ -12,5 +12,4 @@ class ApiIntegrationResource < ApplicationResource
   belongs_to :project
 
   # Indirect associations
-
 end

@@ -13,7 +13,7 @@ class Api::V1::ScheduledTasksController < Api::V1::GraphitiController
     scheduled_task = ScheduledTaskResource.build(params)
 
     if scheduled_task.save
-      render jsonapi: scheduled_task, status: 201
+      render jsonapi: scheduled_task, status: :created
     else
       render jsonapi_errors: scheduled_task
     end
@@ -33,7 +33,7 @@ class Api::V1::ScheduledTasksController < Api::V1::GraphitiController
     scheduled_task = ScheduledTaskResource.find(params)
 
     if scheduled_task.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: scheduled_task
     end

@@ -1,9 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Project, type: :model do
-  
-    describe "Direct Associations" do
-
+  describe "Direct Associations" do
     it { should have_many(:erd_urls) }
 
     it { should have_many(:scheduled_tasks) }
@@ -21,14 +19,11 @@ RSpec.describe Project, type: :model do
     it { should have_many(:user_stories) }
 
     it { should belong_to(:user) }
+  end
 
-    end
+  describe "InDirect Associations" do
+  end
 
-    describe "InDirect Associations" do
-
-    end
-
-    describe "Validations" do
-
-    end
+  describe "Validations" do
+  end
 end

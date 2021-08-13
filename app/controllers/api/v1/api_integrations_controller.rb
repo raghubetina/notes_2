@@ -13,7 +13,7 @@ class Api::V1::ApiIntegrationsController < Api::V1::GraphitiController
     api_integration = ApiIntegrationResource.build(params)
 
     if api_integration.save
-      render jsonapi: api_integration, status: 201
+      render jsonapi: api_integration, status: :created
     else
       render jsonapi_errors: api_integration
     end
@@ -33,7 +33,7 @@ class Api::V1::ApiIntegrationsController < Api::V1::GraphitiController
     api_integration = ApiIntegrationResource.find(params)
 
     if api_integration.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: api_integration
     end

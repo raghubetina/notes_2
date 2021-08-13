@@ -1,6 +1,5 @@
 ActiveAdmin.register ScheduledTask do
-
- permit_params :recurring, :occurence_schedule, :project_id, :description
+  permit_params :recurring, :occurence_schedule, :project_id, :description
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +13,4 @@ ActiveAdmin.register ScheduledTask do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

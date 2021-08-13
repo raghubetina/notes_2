@@ -1,10 +1,11 @@
 class ScreensController < ApplicationController
-  before_action :set_screen, only: [:show, :edit, :update, :destroy]
+  before_action :set_screen, only: %i[show edit update destroy]
 
   # GET /screens
   def index
     @q = Screen.ransack(params[:q])
-    @screens = @q.result(:distinct => true).includes(:project, :outgoing_controls, :incoming_controls, :leads_to_screens, :incoming_screens).page(params[:page]).per(10)
+    @screens = @q.result(distinct: true).includes(:project,
+                                                  :outgoing_controls, :incoming_controls, :leads_to_screens, :incoming_screens).page(params[:page]).per(10)
   end
 
   # GET /screens/1
@@ -18,17 +19,16 @@ class ScreensController < ApplicationController
   end
 
   # GET /screens/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /screens
   def create
     @screen = Screen.new(screen_params)
 
     if @screen.save
-      message = 'Screen was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "Screen was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @screen, notice: message
       end
@@ -40,7 +40,7 @@ class ScreensController < ApplicationController
   # PATCH/PUT /screens/1
   def update
     if @screen.update(screen_params)
-      redirect_to @screen, notice: 'Screen was successfully updated.'
+      redirect_to @screen, notice: "Screen was successfully updated."
     else
       render :edit
     end
@@ -50,22 +50,23 @@ class ScreensController < ApplicationController
   def destroy
     @screen.destroy
     message = "Screen was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to screens_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_screen
-      @screen = Screen.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def screen_params
-      params.require(:screen).permit(:project_id, :wireframe, :description, :url_pattern, :title)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_screen
+    @screen = Screen.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def screen_params
+    params.require(:screen).permit(:project_id, :wireframe, :description,
+                                   :url_pattern, :title)
+  end
 end

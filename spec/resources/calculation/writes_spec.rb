@@ -1,13 +1,13 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe CalculationResource, type: :resource do
-  describe 'creating' do
+  describe "creating" do
     let(:payload) do
       {
         data: {
-          type: 'calculations',
-          attributes: { }
-        }
+          type: "calculations",
+          attributes: {},
+        },
       }
     end
 
@@ -15,23 +15,24 @@ RSpec.describe CalculationResource, type: :resource do
       CalculationResource.build(payload)
     end
 
-    it 'works' do
-      expect {
-        expect(instance.save).to eq(true), instance.errors.full_messages.to_sentence
-      }.to change { Calculation.count }.by(1)
+    it "works" do
+      expect do
+        expect(instance.save).to eq(true),
+                                 instance.errors.full_messages.to_sentence
+      end.to change { Calculation.count }.by(1)
     end
   end
 
-  describe 'updating' do
+  describe "updating" do
     let!(:calculation) { create(:calculation) }
 
     let(:payload) do
       {
         data: {
           id: calculation.id.to_s,
-          type: 'calculations',
-          attributes: { } # Todo!
-        }
+          type: "calculations",
+          attributes: {}, # Todo!
+        },
       }
     end
 
@@ -39,25 +40,25 @@ RSpec.describe CalculationResource, type: :resource do
       CalculationResource.find(payload)
     end
 
-    xit 'works (add some attributes and enable this spec)' do
-      expect {
+    xit "works (add some attributes and enable this spec)" do
+      expect do
         expect(instance.update_attributes).to eq(true)
-      }.to change { calculation.reload.updated_at }
+      end.to change { calculation.reload.updated_at }
       # .and change { calculation.foo }.to('bar') <- example
     end
   end
 
-  describe 'destroying' do
+  describe "destroying" do
     let!(:calculation) { create(:calculation) }
 
     let(:instance) do
       CalculationResource.find(id: calculation.id)
     end
 
-    it 'works' do
-      expect {
+    it "works" do
+      expect do
         expect(instance.destroy).to eq(true)
-      }.to change { Calculation.count }.by(-1)
+      end.to change { Calculation.count }.by(-1)
     end
   end
 end

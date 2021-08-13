@@ -38,16 +38,15 @@ class ScreenResource < ApplicationResource
     end
   end
 
-
   filter :on_screen_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:incoming_screens).where(:controls => {:on_screen_id => value})
+      scope.eager_load(:incoming_screens).where(controls: { on_screen_id: value })
     end
   end
 
   filter :leads_to_screen_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:leads_to_screens).where(:controls => {:leads_to_screen_id => value})
+      scope.eager_load(:leads_to_screens).where(controls: { leads_to_screen_id: value })
     end
   end
 end

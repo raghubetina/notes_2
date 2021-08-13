@@ -14,5 +14,4 @@ class Callback < ApplicationRecord
   def to_s
     event.to_s
   end
-
 end

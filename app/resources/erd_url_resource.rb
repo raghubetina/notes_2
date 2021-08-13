@@ -11,5 +11,4 @@ class ErdUrlResource < ApplicationResource
   belongs_to :project
 
   # Indirect associations
-
 end

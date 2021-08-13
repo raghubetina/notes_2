@@ -12,5 +12,4 @@ class ApiIntegration < ApplicationRecord
   def to_s
     documentation
   end
-
 end

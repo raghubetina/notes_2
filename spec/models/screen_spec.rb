@@ -1,26 +1,20 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Screen, type: :model do
-  
-    describe "Direct Associations" do
-
+  describe "Direct Associations" do
     it { should have_many(:incoming_controls) }
 
     it { should have_many(:outgoing_controls) }
 
     it { should belong_to(:project) }
+  end
 
-    end
-
-    describe "InDirect Associations" do
-
+  describe "InDirect Associations" do
     it { should have_many(:incoming_screens) }
 
     it { should have_many(:leads_to_screens) }
+  end
 
-    end
-
-    describe "Validations" do
-
-    end
+  describe "Validations" do
+  end
 end

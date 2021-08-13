@@ -13,5 +13,4 @@ class UserStoryResource < ApplicationResource
   belongs_to :project
 
   # Indirect associations
-
 end

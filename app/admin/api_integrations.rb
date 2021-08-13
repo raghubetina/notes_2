@@ -1,6 +1,5 @@
 ActiveAdmin.register ApiIntegration do
-
- permit_params :documentation, :purpose, :project_id, :example_endopoint
+  permit_params :documentation, :purpose, :project_id, :example_endopoint
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +13,4 @@ ActiveAdmin.register ApiIntegration do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

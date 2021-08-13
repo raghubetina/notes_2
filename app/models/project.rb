@@ -2,31 +2,31 @@ class Project < ApplicationRecord
   # Direct associations
 
   has_many   :erd_urls,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :scheduled_tasks,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :state_machines,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :callbacks,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :screens,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :calculations,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :api_integrations,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :user_stories,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :user,
-             :counter_cache => true
+             counter_cache: true
 
   # Indirect associations
 
@@ -37,5 +37,4 @@ class Project < ApplicationRecord
   def to_s
     name
   end
-
 end

@@ -16,5 +16,4 @@ class ControlResource < ApplicationResource
              resource: ScreenResource
 
   # Indirect associations
-
 end

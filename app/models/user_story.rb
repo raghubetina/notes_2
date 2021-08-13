@@ -12,5 +12,4 @@ class UserStory < ApplicationRecord
   def to_s
     role
   end
-
 end

@@ -1,6 +1,5 @@
 ActiveAdmin.register ErdUrl do
-
- permit_params :project_id, :ideas_url, :image
+  permit_params :project_id, :ideas_url, :image
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +13,4 @@ ActiveAdmin.register ErdUrl do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

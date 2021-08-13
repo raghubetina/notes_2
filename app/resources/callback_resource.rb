@@ -13,5 +13,4 @@ class CallbackResource < ApplicationResource
   belongs_to :project
 
   # Indirect associations
-
 end

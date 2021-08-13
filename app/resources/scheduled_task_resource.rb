@@ -12,5 +12,4 @@ class ScheduledTaskResource < ApplicationResource
   belongs_to :project
 
   # Indirect associations
-
 end

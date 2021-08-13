@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   # Direct associations
 
   has_many   :callbacks,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
@@ -13,5 +13,4 @@ class Event < ApplicationRecord
   def to_s
     name
   end
-
 end

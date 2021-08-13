@@ -1,15 +1,14 @@
 class UserStoriesController < ApplicationController
-  before_action :set_user_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_story, only: %i[show edit update destroy]
 
   # GET /user_stories
   def index
     @q = UserStory.ransack(params[:q])
-    @user_stories = @q.result(:distinct => true).includes(:project).page(params[:page]).per(10)
+    @user_stories = @q.result(distinct: true).includes(:project).page(params[:page]).per(10)
   end
 
   # GET /user_stories/1
-  def show
-  end
+  def show; end
 
   # GET /user_stories/new
   def new
@@ -17,17 +16,16 @@ class UserStoriesController < ApplicationController
   end
 
   # GET /user_stories/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /user_stories
   def create
     @user_story = UserStory.new(user_story_params)
 
     if @user_story.save
-      message = 'UserStory was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "UserStory was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @user_story, notice: message
       end
@@ -39,7 +37,7 @@ class UserStoriesController < ApplicationController
   # PATCH/PUT /user_stories/1
   def update
     if @user_story.update(user_story_params)
-      redirect_to @user_story, notice: 'User story was successfully updated.'
+      redirect_to @user_story, notice: "User story was successfully updated."
     else
       render :edit
     end
@@ -49,22 +47,23 @@ class UserStoriesController < ApplicationController
   def destroy
     @user_story.destroy
     message = "UserStory was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to user_stories_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user_story
-      @user_story = UserStory.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def user_story_params
-      params.require(:user_story).permit(:role, :capability, :benefit, :project_id, :notes)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user_story
+    @user_story = UserStory.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def user_story_params
+    params.require(:user_story).permit(:role, :capability, :benefit,
+                                       :project_id, :notes)
+  end
 end

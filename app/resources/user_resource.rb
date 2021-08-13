@@ -8,8 +8,7 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
-  has_many   :projects
+  has_many :projects
 
   # Indirect associations
-
 end

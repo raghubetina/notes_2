@@ -1,15 +1,14 @@
 class ApiIntegrationsController < ApplicationController
-  before_action :set_api_integration, only: [:show, :edit, :update, :destroy]
+  before_action :set_api_integration, only: %i[show edit update destroy]
 
   # GET /api_integrations
   def index
     @q = ApiIntegration.ransack(params[:q])
-    @api_integrations = @q.result(:distinct => true).includes(:project).page(params[:page]).per(10)
+    @api_integrations = @q.result(distinct: true).includes(:project).page(params[:page]).per(10)
   end
 
   # GET /api_integrations/1
-  def show
-  end
+  def show; end
 
   # GET /api_integrations/new
   def new
@@ -17,17 +16,16 @@ class ApiIntegrationsController < ApplicationController
   end
 
   # GET /api_integrations/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /api_integrations
   def create
     @api_integration = ApiIntegration.new(api_integration_params)
 
     if @api_integration.save
-      message = 'ApiIntegration was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "ApiIntegration was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @api_integration, notice: message
       end
@@ -39,7 +37,8 @@ class ApiIntegrationsController < ApplicationController
   # PATCH/PUT /api_integrations/1
   def update
     if @api_integration.update(api_integration_params)
-      redirect_to @api_integration, notice: 'Api integration was successfully updated.'
+      redirect_to @api_integration,
+                  notice: "Api integration was successfully updated."
     else
       render :edit
     end
@@ -49,22 +48,23 @@ class ApiIntegrationsController < ApplicationController
   def destroy
     @api_integration.destroy
     message = "ApiIntegration was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to api_integrations_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_api_integration
-      @api_integration = ApiIntegration.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def api_integration_params
-      params.require(:api_integration).permit(:documentation, :purpose, :project_id, :example_endopoint)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_api_integration
+    @api_integration = ApiIntegration.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def api_integration_params
+    params.require(:api_integration).permit(:documentation, :purpose,
+                                            :project_id, :example_endopoint)
+  end
 end

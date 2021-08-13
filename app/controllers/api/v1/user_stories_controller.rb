@@ -13,7 +13,7 @@ class Api::V1::UserStoriesController < Api::V1::GraphitiController
     user_story = UserStoryResource.build(params)
 
     if user_story.save
-      render jsonapi: user_story, status: 201
+      render jsonapi: user_story, status: :created
     else
       render jsonapi_errors: user_story
     end
@@ -33,7 +33,7 @@ class Api::V1::UserStoriesController < Api::V1::GraphitiController
     user_story = UserStoryResource.find(params)
 
     if user_story.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: user_story
     end

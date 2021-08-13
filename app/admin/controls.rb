@@ -1,6 +1,5 @@
 ActiveAdmin.register Control do
-
- permit_params :on_screen_id, :leads_to_screen_id, :copy, :crud
+  permit_params :on_screen_id, :leads_to_screen_id, :copy, :crud
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +13,4 @@ ActiveAdmin.register Control do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end

@@ -1,6 +1,5 @@
 ActiveAdmin.register UserStory do
-
- permit_params :role, :capability, :benefit, :project_id, :notes
+  permit_params :role, :capability, :benefit, :project_id, :notes
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,5 +13,4 @@ ActiveAdmin.register UserStory do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
 end
