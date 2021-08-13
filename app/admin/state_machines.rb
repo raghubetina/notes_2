@@ -1,5 +1,7 @@
 ActiveAdmin.register StateMachine do
 
+ permit_params :link_to_diagram, :project_id, :notes, :dsl, :diagram, :table, :column
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
