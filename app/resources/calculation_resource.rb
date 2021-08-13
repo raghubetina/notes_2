@@ -7,6 +7,8 @@ class CalculationResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :project
+
   # Indirect associations
 
 end
