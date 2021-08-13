@@ -16,7 +16,7 @@
 
     <%= f.label :on_screen_id %>
     <!-- Input for on_screen_id start -->
-    <%= f.number_field :on_screen_id, class: on_screen_class, placeholder: "Enter on screen" %>
+    <%= f.collection_select :on_screen_id, Screen.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for on_screen_id end -->
     <% if on_screen_was_invalid %>
       <% control.errors.full_messages_for(:on_screen).each do |message| %>
