@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :calculations
   resources :api_integrations
   resources :scheduled_tasks
   resources :state_machines

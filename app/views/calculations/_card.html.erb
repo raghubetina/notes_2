@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Calculation #<%= calculation.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Description</dt>
+      <!-- Display description start -->
+      <dd><%= calculation.description %></dd>
+      <!-- Display description end -->
+
+      <dt>Project</dt>
+      <!-- Display project_id start -->
+      <dd><%= calculation.project_id %></dd>
+      <!-- Display project_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back calculation, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link calculation start -->
+      <div class="col">
+        <%= link_to edit_calculation_url(calculation), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link calculation end -->
+
+      <!-- Delete link calculation start -->
+      <div class="col">
+        <%= link_to calculation, method: :delete, data: { confirm: "Do you really want to delete this calculation?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link calculation end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(calculation.updated_at) %> ago
+  </div>
+</div>
