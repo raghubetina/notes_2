@@ -12,6 +12,8 @@ class ProjectResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :erd_urls
+
   has_many   :scheduled_tasks
 
   has_many   :state_machines
