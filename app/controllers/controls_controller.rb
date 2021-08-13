@@ -1,25 +1,20 @@
 class ControlsController < ApplicationController
   before_action :set_control, only: %i[show edit update destroy]
 
-  # GET /controls
   def index
     @q = Control.ransack(params[:q])
     @controls = @q.result(distinct: true).includes(:on_screen,
                                                    :leads_to_screen).page(params[:page]).per(10)
   end
 
-  # GET /controls/1
   def show; end
 
-  # GET /controls/new
   def new
     @control = Control.new
   end
 
-  # GET /controls/1/edit
   def edit; end
 
-  # POST /controls
   def create
     @control = Control.new(control_params)
 
@@ -35,7 +30,6 @@ class ControlsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /controls/1
   def update
     if @control.update(control_params)
       redirect_to @control, notice: "Control was successfully updated."
@@ -44,7 +38,6 @@ class ControlsController < ApplicationController
     end
   end
 
-  # DELETE /controls/1
   def destroy
     @control.destroy
     message = "Control was successfully deleted."
@@ -57,12 +50,10 @@ class ControlsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_control
     @control = Control.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def control_params
     params.require(:control).permit(:on_screen_id, :leads_to_screen_id,
                                     :copy, :crud)

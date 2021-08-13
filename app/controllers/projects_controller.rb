@@ -4,14 +4,12 @@ class ProjectsController < ApplicationController
 
   before_action :set_project, only: %i[show edit update destroy]
 
-  # GET /projects
   def index
     @q = current_user.projects.ransack(params[:q])
     @projects = @q.result(distinct: true).includes(:user, :user_stories,
                                                    :api_integrations, :calculations, :screens, :callbacks, :state_machines, :scheduled_tasks, :erd_urls).page(params[:page]).per(10)
   end
 
-  # GET /projects/1
   def show
     @erd_url = ErdUrl.new
     @scheduled_task = ScheduledTask.new
@@ -23,15 +21,12 @@ class ProjectsController < ApplicationController
     @user_story = UserStory.new
   end
 
-  # GET /projects/new
   def new
     @project = Project.new
   end
 
-  # GET /projects/1/edit
   def edit; end
 
-  # POST /projects
   def create
     @project = Project.new(project_params)
 
@@ -47,7 +42,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /projects/1
   def update
     if @project.update(project_params)
       redirect_to @project, notice: "Project was successfully updated."
@@ -56,7 +50,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # DELETE /projects/1
   def destroy
     @project.destroy
     message = "Project was successfully deleted."
@@ -77,12 +70,10 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_project
     @project = Project.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def project_params
     params.require(:project).permit(:name, :existing_process,
                                     :job_to_be_done, :struggling_moment, :other, :existing_database, :user_id)

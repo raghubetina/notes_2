@@ -1,24 +1,19 @@
 class ApiIntegrationsController < ApplicationController
   before_action :set_api_integration, only: %i[show edit update destroy]
 
-  # GET /api_integrations
   def index
     @q = ApiIntegration.ransack(params[:q])
     @api_integrations = @q.result(distinct: true).includes(:project).page(params[:page]).per(10)
   end
 
-  # GET /api_integrations/1
   def show; end
 
-  # GET /api_integrations/new
   def new
     @api_integration = ApiIntegration.new
   end
 
-  # GET /api_integrations/1/edit
   def edit; end
 
-  # POST /api_integrations
   def create
     @api_integration = ApiIntegration.new(api_integration_params)
 
@@ -34,7 +29,6 @@ class ApiIntegrationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /api_integrations/1
   def update
     if @api_integration.update(api_integration_params)
       redirect_to @api_integration,
@@ -44,7 +38,6 @@ class ApiIntegrationsController < ApplicationController
     end
   end
 
-  # DELETE /api_integrations/1
   def destroy
     @api_integration.destroy
     message = "ApiIntegration was successfully deleted."
@@ -57,12 +50,10 @@ class ApiIntegrationsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_api_integration
     @api_integration = ApiIntegration.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def api_integration_params
     params.require(:api_integration).permit(:documentation, :purpose,
                                             :project_id, :example_endopoint)
