@@ -1,67 +1,37 @@
-<!-- Form project start -->
 <%= form_with(model: @project, local: true) do |f| %>
-<!-- Form project end -->
 
-  <!-- Label and input for name start -->
   <div class="form-group">
     <%= f.label :name %>
 
-    <!-- Input for name start -->
     <%= f.text_field :name, class: "form-control" %>
-    <!-- Input for name end -->
   </div>
-  <!-- Label and input for name end -->
 
-  <!-- Label and input for existing_process start -->
   <div class="form-group">
     <%= f.label :existing_process %>
-    <!-- Input for existing_process start -->
     <%= f.text_area :existing_process, rows: "3", class: "form-control" %>
-    <!-- Input for existing_process end -->
   </div>
-  <!-- Label and input for existing_process end -->
 
-  <!-- Label and input for job_to_be_done start -->
   <div class="form-group">
     <%= f.label :job_to_be_done %>
-    <!-- Input for job_to_be_done start -->
     <%= f.text_area :job_to_be_done, rows: "3", class: "form-control" %>
-    <!-- Input for job_to_be_done end -->
   </div>
-  <!-- Label and input for job_to_be_done end -->
 
-  <!-- Label and input for struggling_moment start -->
   <div class="form-group">
     <%= f.label :struggling_moment %>
-    <!-- Input for struggling_moment start -->
     <%= f.text_area :struggling_moment, rows: "3", class: "form-control" %>
-    <!-- Input for struggling_moment end -->
   </div>
-  <!-- Label and input for struggling_moment end -->
 
-  <!-- Label and input for other start -->
   <div class="form-group">
     <%= f.label :other %>
-    <!-- Input for other start -->
     <%= f.text_area :other, rows: "3", class: "form-control" %>
-    <!-- Input for other end -->
   </div>
-  <!-- Label and input for other end -->
 
-  <!-- Label and input for existing_database start -->
   <div class="form-group">
     <%= f.label :existing_database %>
-    <!-- Input for existing_database start -->
     <%= f.text_area :existing_database, rows: "3", class: "form-control" %>
-    <!-- Input for existing_database end -->
   </div>
-  <!-- Label and input for existing_database end -->
 
-  <!-- Label and input for user_id start -->
-  <!-- Input for user_id start -->
   <%= f.hidden_field :user_id, value: @user.id %>
-  <!-- Input for user_id end -->
-  <!-- Label and input for user_id end -->
 
   <%= f.submit "Create project", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

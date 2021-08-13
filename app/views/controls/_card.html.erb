@@ -6,32 +6,24 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>On screen</dt>
-      <!-- Display on_screen_id start -->
       <dd>
         <% if @control.on_screen.present? %>
           <%= link_to control.on_screen, control.on_screen %>
         <% end %>
       </dd>
-      <!-- Display on_screen_id end -->
 
       <dt>Leads to screen</dt>
-      <!-- Display leads_to_screen_id start -->
       <dd>
         <% if @control.leads_to_screen.present? %>
           <%= link_to control.leads_to_screen, control.leads_to_screen %>
         <% end %>
       </dd>
-      <!-- Display leads_to_screen_id end -->
 
       <dt>Copy</dt>
-      <!-- Display copy start -->
       <dd><%= control.copy %></dd>
-      <!-- Display copy end -->
 
       <dt>Crud</dt>
-      <!-- Display crud start -->
       <dd><%= control.crud %></dd>
-      <!-- Display crud end -->
 
     </dl>
 
@@ -40,21 +32,17 @@
         <%= link_to_show_or_back control, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link control start -->
       <div class="col">
         <%= link_to edit_control_url(control), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link control end -->
 
-      <!-- Delete link control start -->
       <div class="col">
         <%= link_to control, method: :delete, data: { confirm: "Do you really want to delete this control?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link control end -->
     </div>
   </div>
 

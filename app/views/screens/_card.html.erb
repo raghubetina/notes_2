@@ -6,35 +6,25 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Project</dt>
-      <!-- Display project_id start -->
       <dd>
         <% if @screen.project.present? %>
           <%= link_to screen.project, screen.project %>
         <% end %>
       </dd>
-      <!-- Display project_id end -->
 
       <dt>Wireframe</dt>
-      <!-- Display wireframe start -->
       <dd>
         <%= cl_image_tag @screen.wireframe, class: "img-fluid" %>
       </dd>
-      <!-- Display wireframe end -->
 
       <dt>Description</dt>
-      <!-- Display description start -->
       <dd><%= screen.description %></dd>
-      <!-- Display description end -->
 
       <dt>Url pattern</dt>
-      <!-- Display url_pattern start -->
       <dd><%= screen.url_pattern %></dd>
-      <!-- Display url_pattern end -->
 
       <dt>Title</dt>
-      <!-- Display title start -->
       <dd><%= screen.title %></dd>
-      <!-- Display title end -->
 
     </dl>
 
@@ -43,21 +33,17 @@
         <%= link_to_show_or_back screen, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link screen start -->
       <div class="col">
         <%= link_to edit_screen_url(screen), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link screen end -->
 
-      <!-- Delete link screen start -->
       <div class="col">
         <%= link_to screen, method: :delete, data: { confirm: "Do you really want to delete this screen?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link screen end -->
     </div>
   </div>
 

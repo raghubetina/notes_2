@@ -10,24 +10,18 @@
   <ul class="list-group list-group-flush">
     <% @project.screens.each do |screen| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to screen, screen %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <%= link_to screen, method: :delete, data: { confirm: "Do you really want to delete this screen" } do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="project_screens_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "projects/project_screens_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

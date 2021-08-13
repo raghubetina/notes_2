@@ -1,7 +1,6 @@
 <% was_validated = state_machine.errors.any? %>
 
 <%= form_with(model: state_machine, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for link_to_diagram start -->
   <div class="form-group">
     <% link_to_diagram_class = "form-control" %>
     <% link_to_diagram_was_invalid = state_machine.errors.include?(:link_to_diagram) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :link_to_diagram %>
-    <!-- Input for link_to_diagram start -->
     <%= f.text_field :link_to_diagram, class: link_to_diagram_class, placeholder: "Enter link to diagram" %>
-    <!-- Input for link_to_diagram end -->
     <% if link_to_diagram_was_invalid %>
       <% state_machine.errors.full_messages_for(:link_to_diagram).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for link_to_diagram end -->
-  <!-- Label and input for project_id start -->
   <div class="form-group">
     <% project_class = "form-control" %>
     <% project_was_invalid = state_machine.errors.include?(:project) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :project_id %>
-    <!-- Input for project_id start -->
     <%= f.collection_select :project_id, Project.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for project_id end -->
     <% if project_was_invalid %>
       <% state_machine.errors.full_messages_for(:project).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for project_id end -->
-  <!-- Label and input for notes start -->
   <div class="form-group">
     <% note_class = "form-control" %>
     <% note_was_invalid = state_machine.errors.include?(:note) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :notes %>
-    <!-- Input for notes start -->
     <%= f.text_area :notes, class: note_class, placeholder: "Enter note" %>
-    <!-- Input for notes end -->
     <% if note_was_invalid %>
       <% state_machine.errors.full_messages_for(:note).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for notes end -->
-  <!-- Label and input for dsl start -->
   <div class="form-group">
     <% dsl_class = "form-control" %>
     <% dsl_was_invalid = state_machine.errors.include?(:dsl) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :dsl %>
-    <!-- Input for dsl start -->
     <%= f.text_area :dsl, class: dsl_class, placeholder: "Enter dsl" %>
-    <!-- Input for dsl end -->
     <% if dsl_was_invalid %>
       <% state_machine.errors.full_messages_for(:dsl).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,8 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for dsl end -->
-  <!-- Label and input for diagram start -->
   <div class="form-group">
     <% diagram_class = "form-control" %>
     <% diagram_was_invalid = state_machine.errors.include?(:diagram) %>
@@ -119,9 +102,7 @@
     <% end %>
 
     <%= f.label :diagram %>
-    <!-- Input for diagram start -->
     <%= f.file_field :diagram, class: "form-control" %>
-    <!-- Input for diagram end -->
     <% if diagram_was_invalid %>
       <% state_machine.errors.full_messages_for(:diagram).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -130,8 +111,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for diagram end -->
-  <!-- Label and input for table start -->
   <div class="form-group">
     <% table_class = "form-control" %>
     <% table_was_invalid = state_machine.errors.include?(:table) %>
@@ -145,9 +124,7 @@
     <% end %>
 
     <%= f.label :table %>
-    <!-- Input for table start -->
     <%= f.text_field :table, class: table_class, placeholder: "Enter table" %>
-    <!-- Input for table end -->
     <% if table_was_invalid %>
       <% state_machine.errors.full_messages_for(:table).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -156,8 +133,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for table end -->
-  <!-- Label and input for column start -->
   <div class="form-group">
     <% column_class = "form-control" %>
     <% column_was_invalid = state_machine.errors.include?(:column) %>
@@ -171,9 +146,7 @@
     <% end %>
 
     <%= f.label :column %>
-    <!-- Input for column start -->
     <%= f.text_field :column, class: column_class, placeholder: "Enter column" %>
-    <!-- Input for column end -->
     <% if column_was_invalid %>
       <% state_machine.errors.full_messages_for(:column).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -182,6 +155,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for column end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

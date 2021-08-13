@@ -1,32 +1,18 @@
-<!-- Form callback start -->
 <%= form_with(model: @callback, local: true) do |f| %>
-<!-- Form callback end -->
 
-  <!-- Label and input for event_id start -->
   <div class="form-group">
     <%= f.label :event_id %>
 
-    <!-- Input for event_id start -->
     <%= f.collection_select :event_id, Event.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for event_id end -->
   </div>
-  <!-- Label and input for event_id end -->
 
-  <!-- Label and input for project_id start -->
-  <!-- Input for project_id start -->
   <%= f.hidden_field :project_id, value: @project.id %>
-  <!-- Input for project_id end -->
-  <!-- Label and input for project_id end -->
 
-  <!-- Label and input for description start -->
   <div class="form-group">
     <%= f.label :description %>
 
-    <!-- Input for description start -->
     <%= f.text_field :description, class: "form-control" %>
-    <!-- Input for description end -->
   </div>
-  <!-- Label and input for description end -->
 
   <%= f.submit "Create callback", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

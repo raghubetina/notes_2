@@ -6,43 +6,29 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Name</dt>
-      <!-- Display name start -->
       <dd><%= project.name %></dd>
-      <!-- Display name end -->
 
       <dt>Existing process</dt>
-      <!-- Display existing_process start -->
       <dd><%= project.existing_process %></dd>
-      <!-- Display existing_process end -->
 
       <dt>Job to be done</dt>
-      <!-- Display job_to_be_done start -->
       <dd><%= project.job_to_be_done %></dd>
-      <!-- Display job_to_be_done end -->
 
       <dt>Struggling moment</dt>
-      <!-- Display struggling_moment start -->
       <dd><%= project.struggling_moment %></dd>
-      <!-- Display struggling_moment end -->
 
       <dt>Other</dt>
-      <!-- Display other start -->
       <dd><%= project.other %></dd>
-      <!-- Display other end -->
 
       <dt>Existing database</dt>
-      <!-- Display existing_database start -->
       <dd><%= project.existing_database %></dd>
-      <!-- Display existing_database end -->
 
       <dt>User</dt>
-      <!-- Display user_id start -->
       <dd>
         <% if @project.user.present? %>
           <%= link_to project.user, project.user %>
         <% end %>
       </dd>
-      <!-- Display user_id end -->
 
     </dl>
 
@@ -51,7 +37,6 @@
         <%= link_to_show_or_back project, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link project start -->
       <div class="col">
         <% if current_user == @project.user %>
           <%= link_to edit_project_url(project), class: "btn btn-block btn-sm btn-outline-secondary" do %>
@@ -59,9 +44,7 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Edit link project end -->
 
-      <!-- Delete link project start -->
       <div class="col">
         <% if current_user == @project.user %>
           <%= link_to project, method: :delete, data: { confirm: "Do you really want to delete this project?" }, class: "btn btn-block btn-outline-secondary" do %>
@@ -69,7 +52,6 @@
           <% end %>
         <% end %>
       </div>
-      <!-- Delete link project end -->
     </div>
   </div>
 

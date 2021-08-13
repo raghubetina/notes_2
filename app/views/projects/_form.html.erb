@@ -1,7 +1,6 @@
 <% was_validated = project.errors.any? %>
 
 <%= form_with(model: project, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for name start -->
   <div class="form-group">
     <% name_class = "form-control" %>
     <% name_was_invalid = project.errors.include?(:name) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :name %>
-    <!-- Input for name start -->
     <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
-    <!-- Input for name end -->
     <% if name_was_invalid %>
       <% project.errors.full_messages_for(:name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for name end -->
-  <!-- Label and input for existing_process start -->
   <div class="form-group">
     <% existing_process_class = "form-control" %>
     <% existing_process_was_invalid = project.errors.include?(:existing_process) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :existing_process %>
-    <!-- Input for existing_process start -->
     <%= f.text_area :existing_process, class: existing_process_class, placeholder: "Enter existing process" %>
-    <!-- Input for existing_process end -->
     <% if existing_process_was_invalid %>
       <% project.errors.full_messages_for(:existing_process).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for existing_process end -->
-  <!-- Label and input for job_to_be_done start -->
   <div class="form-group">
     <% job_to_be_done_class = "form-control" %>
     <% job_to_be_done_was_invalid = project.errors.include?(:job_to_be_done) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :job_to_be_done %>
-    <!-- Input for job_to_be_done start -->
     <%= f.text_area :job_to_be_done, class: job_to_be_done_class, placeholder: "Enter job to be done" %>
-    <!-- Input for job_to_be_done end -->
     <% if job_to_be_done_was_invalid %>
       <% project.errors.full_messages_for(:job_to_be_done).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for job_to_be_done end -->
-  <!-- Label and input for struggling_moment start -->
   <div class="form-group">
     <% struggling_moment_class = "form-control" %>
     <% struggling_moment_was_invalid = project.errors.include?(:struggling_moment) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :struggling_moment %>
-    <!-- Input for struggling_moment start -->
     <%= f.text_area :struggling_moment, class: struggling_moment_class, placeholder: "Enter struggling moment" %>
-    <!-- Input for struggling_moment end -->
     <% if struggling_moment_was_invalid %>
       <% project.errors.full_messages_for(:struggling_moment).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,8 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for struggling_moment end -->
-  <!-- Label and input for other start -->
   <div class="form-group">
     <% other_class = "form-control" %>
     <% other_was_invalid = project.errors.include?(:other) %>
@@ -119,9 +102,7 @@
     <% end %>
 
     <%= f.label :other %>
-    <!-- Input for other start -->
     <%= f.text_area :other, class: other_class, placeholder: "Enter other" %>
-    <!-- Input for other end -->
     <% if other_was_invalid %>
       <% project.errors.full_messages_for(:other).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -130,8 +111,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for other end -->
-  <!-- Label and input for existing_database start -->
   <div class="form-group">
     <% existing_database_class = "form-control" %>
     <% existing_database_was_invalid = project.errors.include?(:existing_database) %>
@@ -145,9 +124,7 @@
     <% end %>
 
     <%= f.label :existing_database %>
-    <!-- Input for existing_database start -->
     <%= f.text_area :existing_database, class: existing_database_class, placeholder: "Enter existing database" %>
-    <!-- Input for existing_database end -->
     <% if existing_database_was_invalid %>
       <% project.errors.full_messages_for(:existing_database).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -156,11 +133,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for existing_database end -->
-  <!-- Label and input for user_id start -->
-  <!-- Input for "user_id" start -->
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <!-- Input for "user_id" end -->
-  <!-- Label and input for user_id end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

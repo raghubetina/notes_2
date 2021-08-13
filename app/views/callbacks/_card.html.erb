@@ -6,27 +6,21 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Event</dt>
-      <!-- Display event_id start -->
       <dd>
         <% if @callback.event.present? %>
           <%= link_to callback.event, callback.event %>
         <% end %>
       </dd>
-      <!-- Display event_id end -->
 
       <dt>Project</dt>
-      <!-- Display project_id start -->
       <dd>
         <% if @callback.project.present? %>
           <%= link_to callback.project, callback.project %>
         <% end %>
       </dd>
-      <!-- Display project_id end -->
 
       <dt>Description</dt>
-      <!-- Display description start -->
       <dd><%= callback.description %></dd>
-      <!-- Display description end -->
 
     </dl>
 
@@ -35,21 +29,17 @@
         <%= link_to_show_or_back callback, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link callback start -->
       <div class="col">
         <%= link_to edit_callback_url(callback), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link callback end -->
 
-      <!-- Delete link callback start -->
       <div class="col">
         <%= link_to callback, method: :delete, data: { confirm: "Do you really want to delete this callback?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link callback end -->
     </div>
   </div>
 

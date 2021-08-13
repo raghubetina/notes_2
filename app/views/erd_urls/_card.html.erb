@@ -6,25 +6,19 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Project</dt>
-      <!-- Display project_id start -->
       <dd>
         <% if @erd_url.project.present? %>
           <%= link_to erd_url.project, erd_url.project %>
         <% end %>
       </dd>
-      <!-- Display project_id end -->
 
       <dt>Ideas url</dt>
-      <!-- Display ideas_url start -->
       <dd><%= erd_url.ideas_url %></dd>
-      <!-- Display ideas_url end -->
 
       <dt>Image</dt>
-      <!-- Display image start -->
       <dd>
         <%= cl_image_tag @erd_url.image, class: "img-fluid" %>
       </dd>
-      <!-- Display image end -->
 
     </dl>
 
@@ -33,21 +27,17 @@
         <%= link_to_show_or_back erd_url, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link erd_url start -->
       <div class="col">
         <%= link_to edit_erd_url_url(erd_url), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link erd_url end -->
 
-      <!-- Delete link erd_url start -->
       <div class="col">
         <%= link_to erd_url, method: :delete, data: { confirm: "Do you really want to delete this erd_url?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link erd_url end -->
     </div>
   </div>
 

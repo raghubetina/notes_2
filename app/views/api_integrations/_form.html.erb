@@ -1,7 +1,6 @@
 <% was_validated = api_integration.errors.any? %>
 
 <%= form_with(model: api_integration, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for documentation start -->
   <div class="form-group">
     <% documentation_class = "form-control" %>
     <% documentation_was_invalid = api_integration.errors.include?(:documentation) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :documentation %>
-    <!-- Input for documentation start -->
     <%= f.text_field :documentation, class: documentation_class, placeholder: "Enter documentation" %>
-    <!-- Input for documentation end -->
     <% if documentation_was_invalid %>
       <% api_integration.errors.full_messages_for(:documentation).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for documentation end -->
-  <!-- Label and input for purpose start -->
   <div class="form-group">
     <% purpose_class = "form-control" %>
     <% purpose_was_invalid = api_integration.errors.include?(:purpose) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :purpose %>
-    <!-- Input for purpose start -->
     <%= f.text_field :purpose, class: purpose_class, placeholder: "Enter purpose" %>
-    <!-- Input for purpose end -->
     <% if purpose_was_invalid %>
       <% api_integration.errors.full_messages_for(:purpose).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for purpose end -->
-  <!-- Label and input for project_id start -->
   <div class="form-group">
     <% project_class = "form-control" %>
     <% project_was_invalid = api_integration.errors.include?(:project) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :project_id %>
-    <!-- Input for project_id start -->
     <%= f.collection_select :project_id, Project.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for project_id end -->
     <% if project_was_invalid %>
       <% api_integration.errors.full_messages_for(:project).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for project_id end -->
-  <!-- Label and input for example_endopoint start -->
   <div class="form-group">
     <% example_endopoint_class = "form-control" %>
     <% example_endopoint_was_invalid = api_integration.errors.include?(:example_endopoint) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :example_endopoint %>
-    <!-- Input for example_endopoint start -->
     <%= f.text_field :example_endopoint, class: example_endopoint_class, placeholder: "Enter example endopoint" %>
-    <!-- Input for example_endopoint end -->
     <% if example_endopoint_was_invalid %>
       <% api_integration.errors.full_messages_for(:example_endopoint).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,6 +89,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for example_endopoint end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

@@ -10,24 +10,18 @@
   <ul class="list-group list-group-flush">
     <% @project.user_stories.each do |user_story| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to user_story, user_story %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <%= link_to user_story, method: :delete, data: { confirm: "Do you really want to delete this user_story" } do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="project_user_stories_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "projects/project_user_stories_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

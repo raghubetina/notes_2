@@ -1,39 +1,21 @@
-<!-- Form scheduled_task start -->
 <%= form_with(model: @scheduled_task, local: true) do |f| %>
-<!-- Form scheduled_task end -->
 
-  <!-- Label and input for recurring start -->
   <div class="form-check">
-    <!-- Input for recurring start -->
     <%= f.check_box :recurring, class: "form-check-input" %>
-    <!-- Input for recurring end -->
     <%= f.label :recurring, class: "form-check-label" %>
   </div>
-  <!-- Label and input for recurring end -->
 
-  <!-- Label and input for occurence_schedule start -->
   <div class="form-group">
     <%= f.label :occurence_schedule %>
-    <!-- Input for occurence_schedule start -->
     <%= f.text_area :occurence_schedule, rows: "3", class: "form-control" %>
-    <!-- Input for occurence_schedule end -->
   </div>
-  <!-- Label and input for occurence_schedule end -->
 
-  <!-- Label and input for project_id start -->
-  <!-- Input for project_id start -->
   <%= f.hidden_field :project_id, value: @project.id %>
-  <!-- Input for project_id end -->
-  <!-- Label and input for project_id end -->
 
-  <!-- Label and input for description start -->
   <div class="form-group">
     <%= f.label :description %>
-    <!-- Input for description start -->
     <%= f.text_area :description, rows: "3", class: "form-control" %>
-    <!-- Input for description end -->
   </div>
-  <!-- Label and input for description end -->
 
   <%= f.submit "Create scheduled task", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

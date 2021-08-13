@@ -1,7 +1,6 @@
 <% was_validated = callback.errors.any? %>
 
 <%= form_with(model: callback, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for event_id start -->
   <div class="form-group">
     <% event_class = "form-control" %>
     <% event_was_invalid = callback.errors.include?(:event) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :event_id %>
-    <!-- Input for event_id start -->
     <%= f.collection_select :event_id, Event.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for event_id end -->
     <% if event_was_invalid %>
       <% callback.errors.full_messages_for(:event).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for event_id end -->
-  <!-- Label and input for project_id start -->
   <div class="form-group">
     <% project_class = "form-control" %>
     <% project_was_invalid = callback.errors.include?(:project) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :project_id %>
-    <!-- Input for project_id start -->
     <%= f.collection_select :project_id, Project.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for project_id end -->
     <% if project_was_invalid %>
       <% callback.errors.full_messages_for(:project).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for project_id end -->
-  <!-- Label and input for description start -->
   <div class="form-group">
     <% description_class = "form-control" %>
     <% description_was_invalid = callback.errors.include?(:description) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :description %>
-    <!-- Input for description start -->
     <%= f.text_field :description, class: description_class, placeholder: "Enter description" %>
-    <!-- Input for description end -->
     <% if description_was_invalid %>
       <% callback.errors.full_messages_for(:description).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,6 +67,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for description end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

@@ -1,7 +1,6 @@
 <% was_validated = screen.errors.any? %>
 
 <%= form_with(model: screen, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for project_id start -->
   <div class="form-group">
     <% project_class = "form-control" %>
     <% project_was_invalid = screen.errors.include?(:project) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :project_id %>
-    <!-- Input for project_id start -->
     <%= f.collection_select :project_id, Project.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for project_id end -->
     <% if project_was_invalid %>
       <% screen.errors.full_messages_for(:project).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for project_id end -->
-  <!-- Label and input for wireframe start -->
   <div class="form-group">
     <% wireframe_class = "form-control" %>
     <% wireframe_was_invalid = screen.errors.include?(:wireframe) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :wireframe %>
-    <!-- Input for wireframe start -->
     <%= f.file_field :wireframe, class: "form-control" %>
-    <!-- Input for wireframe end -->
     <% if wireframe_was_invalid %>
       <% screen.errors.full_messages_for(:wireframe).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,8 +45,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for wireframe end -->
-  <!-- Label and input for description start -->
   <div class="form-group">
     <% description_class = "form-control" %>
     <% description_was_invalid = screen.errors.include?(:description) %>
@@ -67,9 +58,7 @@
     <% end %>
 
     <%= f.label :description %>
-    <!-- Input for description start -->
     <%= f.text_area :description, class: description_class, placeholder: "Enter description" %>
-    <!-- Input for description end -->
     <% if description_was_invalid %>
       <% screen.errors.full_messages_for(:description).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -78,8 +67,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for description end -->
-  <!-- Label and input for url_pattern start -->
   <div class="form-group">
     <% url_pattern_class = "form-control" %>
     <% url_pattern_was_invalid = screen.errors.include?(:url_pattern) %>
@@ -93,9 +80,7 @@
     <% end %>
 
     <%= f.label :url_pattern %>
-    <!-- Input for url_pattern start -->
     <%= f.text_field :url_pattern, class: url_pattern_class, placeholder: "Enter url pattern" %>
-    <!-- Input for url_pattern end -->
     <% if url_pattern_was_invalid %>
       <% screen.errors.full_messages_for(:url_pattern).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -104,8 +89,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for url_pattern end -->
-  <!-- Label and input for title start -->
   <div class="form-group">
     <% title_class = "form-control" %>
     <% title_was_invalid = screen.errors.include?(:title) %>
@@ -119,9 +102,7 @@
     <% end %>
 
     <%= f.label :title %>
-    <!-- Input for title start -->
     <%= f.text_field :title, class: title_class, placeholder: "Enter title" %>
-    <!-- Input for title end -->
     <% if title_was_invalid %>
       <% screen.errors.full_messages_for(:title).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -130,6 +111,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for title end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

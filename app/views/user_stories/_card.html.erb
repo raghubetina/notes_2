@@ -6,33 +6,23 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Role</dt>
-      <!-- Display role start -->
       <dd><%= user_story.role %></dd>
-      <!-- Display role end -->
 
       <dt>Capability</dt>
-      <!-- Display capability start -->
       <dd><%= user_story.capability %></dd>
-      <!-- Display capability end -->
 
       <dt>Benefit</dt>
-      <!-- Display benefit start -->
       <dd><%= user_story.benefit %></dd>
-      <!-- Display benefit end -->
 
       <dt>Project</dt>
-      <!-- Display project_id start -->
       <dd>
         <% if @user_story.project.present? %>
           <%= link_to user_story.project, user_story.project %>
         <% end %>
       </dd>
-      <!-- Display project_id end -->
 
       <dt>Notes</dt>
-      <!-- Display notes start -->
       <dd><%= user_story.notes %></dd>
-      <!-- Display notes end -->
 
     </dl>
 
@@ -41,21 +31,17 @@
         <%= link_to_show_or_back user_story, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link user_story start -->
       <div class="col">
         <%= link_to edit_user_story_url(user_story), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link user_story end -->
 
-      <!-- Delete link user_story start -->
       <div class="col">
         <%= link_to user_story, method: :delete, data: { confirm: "Do you really want to delete this user_story?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link user_story end -->
     </div>
   </div>
 

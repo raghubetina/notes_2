@@ -6,45 +6,31 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Link to diagram</dt>
-      <!-- Display link_to_diagram start -->
       <dd><%= state_machine.link_to_diagram %></dd>
-      <!-- Display link_to_diagram end -->
 
       <dt>Project</dt>
-      <!-- Display project_id start -->
       <dd>
         <% if @state_machine.project.present? %>
           <%= link_to state_machine.project, state_machine.project %>
         <% end %>
       </dd>
-      <!-- Display project_id end -->
 
       <dt>Notes</dt>
-      <!-- Display notes start -->
       <dd><%= state_machine.notes %></dd>
-      <!-- Display notes end -->
 
       <dt>Dsl</dt>
-      <!-- Display dsl start -->
       <dd><%= state_machine.dsl %></dd>
-      <!-- Display dsl end -->
 
       <dt>Diagram</dt>
-      <!-- Display diagram start -->
       <dd>
         <%= cl_image_tag @state_machine.diagram, class: "img-fluid" %>
       </dd>
-      <!-- Display diagram end -->
 
       <dt>Table</dt>
-      <!-- Display table start -->
       <dd><%= state_machine.table %></dd>
-      <!-- Display table end -->
 
       <dt>Column</dt>
-      <!-- Display column start -->
       <dd><%= state_machine.column %></dd>
-      <!-- Display column end -->
 
     </dl>
 
@@ -53,21 +39,17 @@
         <%= link_to_show_or_back state_machine, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link state_machine start -->
       <div class="col">
         <%= link_to edit_state_machine_url(state_machine), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link state_machine end -->
 
-      <!-- Delete link state_machine start -->
       <div class="col">
         <%= link_to state_machine, method: :delete, data: { confirm: "Do you really want to delete this state_machine?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link state_machine end -->
     </div>
   </div>
 
