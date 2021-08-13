@@ -12,6 +12,8 @@ class ProjectResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :api_integrations
+
   has_many   :user_stories
 
   belongs_to :user
